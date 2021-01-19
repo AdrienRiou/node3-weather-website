@@ -15,12 +15,12 @@ weatherForm.addEventListener('submit', (e) => {
     messageTwo.textContent = '';
 
     fetch('/weather?address=' + location).then( (response) => {
-        response.json().then((data) => {
-            if(data.error) {
-                messageOne.textContent = JSON.stringify(data.error);
--            } else {
-                messageOne.textContent = JSON.stringify(data.location);
-                messageTwo.textContent = JSON.stringify(data.forecast);
+        response.json().then((error, {location, forecast}) => {
+            if(error) {
+                messageOne.textContent = JSON.stringify(error);
+            } else {
+                messageOne.textContent = JSON.stringify(location);
+                messageTwo.textContent = JSON.stringify(forecast);
             }
         })
     })
