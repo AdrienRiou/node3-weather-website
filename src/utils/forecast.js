@@ -11,12 +11,12 @@ const forecast = (lat, lon, callback) => {
         } else if(body.error) {
             callback('Unable to find coordinates', undefined);
         } else{
-            callback(undefined, {
-                weather: body.current.weather_descriptions[0],
-                temperature: body.current.temperature,
-                fellslike: body.current.feelslike,
-                precipitation: body.current.precip
-            });
+            callback(undefined,
+                body.current.weather_descriptions[0] +
+                '. It is currently ' + body.current.temperature +
+                ', it feels like ' + body.current.feelslike +
+                ', there is ' +  body.current.precip + '% of precipitation'
+            );
         }
     })
     

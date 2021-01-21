@@ -19,7 +19,7 @@ weatherForm.addEventListener('submit', (e) => {
             if(data.error) {
                 messageOne.textContent = data.error;
             } else {
-                messageOne.textContent = 'Salut Polly je te fais des bisous';
+                messageOne.textContent = data.location;
                 messageTwo.textContent = JSON.stringify(data.forecast);
             }
         })
